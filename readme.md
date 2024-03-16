@@ -30,3 +30,7 @@
 - Use webpack and the date-fns library to easily format dates
 - Use local storage for persistant user storage
   - Make it fault tolerant so app doesn't crash if the local storage data doesn't exist
+
+### Diagram:
+
+![System Diagram](system_diagram.png "System Diagram")
