@@ -34,3 +34,35 @@
 ### Diagram:
 
 ![System Diagram](system_diagram.png "System Diagram")
+
+### Other Planning:
+
+- Every todo/project will have a unique id
+- Data structure:
+```ts
+let Priority  = Object.freeze({
+  low: 0,
+  medium: 1,
+  high: 2
+})
+
+interface checklistItem {
+  done: boolean,
+  description: string,
+}
+
+interface todo {
+  id: number,
+  projectId: number,
+  description: string,
+  dueDate: Date,
+  priority: Priority,
+  notes: string,
+  checklist: Array<checklistItem>
+}
+
+interface project {
+  id: number,
+  name: string,
+}
+```
