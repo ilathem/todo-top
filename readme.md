@@ -64,4 +64,6 @@ interface project {
   id: number,
   todos: Array<todo>
 }
+
+projects: Array<project>
 ```
