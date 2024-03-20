@@ -53,7 +53,6 @@ interface checklistItem {
 
 interface todo {
   id: number,
-  projectId: number,
   description: string,
   dueDate: Date,
   priority: Priority,
@@ -63,6 +62,6 @@ interface todo {
 
 interface project {
   id: number,
-  name: string,
+  todos: Array<todo>
 }
 ```

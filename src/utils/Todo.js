@@ -7,16 +7,19 @@ storing and maintaining application state
 
 encapsulating business logic
 */
-import storage from './Storage.js';
+import Storage from './Storage';
 
 const Priority  = Object.freeze({
   low: 0,
   medium: 1,
   high: 2
-})
+});
 
-class Todo {
-    #defaultTodo = {
+export default function Todo() {
+    console.log('starting todo');
+    const storage = new Storage('localStorage');
+
+    const defaultTodo = {
         id: -1,
         projectId: 0,
         desciption: '',
@@ -24,57 +27,56 @@ class Todo {
         priority: Priority.medium,
         notes: '',
         checklist: [],
-    }
+    };
 
-    #defaultChecklistItem = {
+    const defaultChecklistItem = {
         done: false,
         desciption: '',
     }
 
-    #defaultProject = {
+    const defaultProject = {
         id: 0,
         name: 'default',
     }
 
-    constructor() {
-        if (instance) {
-            throw new Error("only 1 instance of Todo allowed"); // verify this works
-        }
-        instance = this;
-        getAll();
-    }
-
-    createTodo(properties, projectId = 0) {
+    const createTodo = (properties, projectId = 0) => {
         // create new todo
     }
 
-    createProject(name) {
+    const createProject = (name) => {
         // create project 
     }
 
-    getAll() {
+    const getAll = () => {
         // get all todos and projects
+        console.log('getting all todos');
     }
 
-    getTodo(todoId) {
+    const getTodo = (todoId) => {
         // get one todo
     }
 
-    getProject(projectId) {
+    const getProject = (projectId) => {
         // get all todos from project
 
         // return todos and project data
     }
 
-    update(id, property) {
+    const updateTodo = (id, property) => {
         // update a todo or project property
     }
 
-    delete(id) {
+    const deleteTodo = (id) => {
         // delete todo or project
     }
+
+    return {
+        createTodo,
+        createProject,
+        getAll,
+        getTodo,
+        getProject,
+        updateTodo,
+        deleteTodo,
+    }
 }
-
-let todo = Object.freeze(new Todo());
-
-export default todo;
