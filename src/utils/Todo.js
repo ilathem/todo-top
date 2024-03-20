@@ -7,9 +7,9 @@ storing and maintaining application state
 
 encapsulating business logic
 */
-import storage from './Storage';
+import storage from './Storage.js';
 
-let Priority  = Object.freeze({
+const Priority  = Object.freeze({
   low: 0,
   medium: 1,
   high: 2
