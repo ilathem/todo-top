@@ -62,6 +62,7 @@ interface todo {
 
 interface project {
   id: number,
+  name: string,
   todos: Array<todo>
 }
 

@@ -16,13 +16,13 @@ const Priority  = Object.freeze({
 });
 
 export default function Todo() {
-    console.log('starting todo');
+    // console.log('starting todo');
     const storage = new Storage('localStorage');
+    let projects = [];
 
     const defaultTodo = {
         id: -1,
-        projectId: 0,
-        desciption: '',
+        description: '',
         dueDate: null,
         priority: Priority.medium,
         notes: '',
@@ -31,25 +31,46 @@ export default function Todo() {
 
     const defaultChecklistItem = {
         done: false,
-        desciption: '',
+        description: '',
     }
 
     const defaultProject = {
-        id: 0,
+        id: -1,
         name: 'default',
+        todos: [],
     }
 
-    const createTodo = (properties, projectId = 0) => {
+    const printProjects = () => {
+        console.log(projects);
+    }
+
+    const createTodo = (projectId, todoId, incomingTodo) => {
         // create new todo
+        // console.log('creating new todo');
+        // console.log(incomingTodo)
+        for (const project of projects) {
+            if (project.id === projectId) {
+                // console.log('project todos:');
+                // console.log(project.todos);
+                for (let i = 0; i < project.todos.length; i++) {
+                    // console.log(project.todos[i]);
+                }
+                project.todos.push(incomingTodo);
+                // console.log('todo added in memory');
+                return true;
+            }
+        }
+        // console.log(storage);
+        // console.log(storage.setTodo(projectId, todoId, incomingTodo))
     }
 
     const createProject = (name) => {
         // create project 
     }
 
-    const getAll = () => {
-        // get all todos and projects
-        console.log('getting all todos');
+    const getAll = async () => {
+        projects = await storage.readAllProm();
+        console.log(projects);
     }
 
     const getTodo = (todoId) => {
@@ -70,6 +91,29 @@ export default function Todo() {
         // delete todo or project
     }
 
+    const addSeedData = () => {
+        console.log('adding seed data');
+        console.log(this.projects);
+        // console.log('adding seed data');
+        let exampleTodos = new Array(6);
+        const exampleDescriptions = [
+            'Mow lawn',
+            'Bake cake',
+            'Play that game',
+            'Read the book',
+            'Go to work',
+            'Go to sleep'
+        ];
+        console.log(this.projects[0]);
+        for (let i = 0; i < exampleTodos.length; i++) {
+            exampleTodos[i] = structuredClone(defaultTodo);
+            exampleTodos[i].description = exampleDescriptions[i];
+            exampleTodos[i].id = Date.now() + i;
+            createTodo(this.projects[0].id, exampleTodos[i].id, exampleTodos[i]);
+        }
+        console.log(this.projects[0]);
+    }
+
     return {
         createTodo,
         createProject,
@@ -78,5 +122,7 @@ export default function Todo() {
         getProject,
         updateTodo,
         deleteTodo,
+        addSeedData,
+        printProjects,
     }
 }
