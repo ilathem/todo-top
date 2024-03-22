@@ -62,7 +62,7 @@ class Todo {
 
     getTodo(id, projectId) {
         const project = this.projects.find(project => project.id === projectId);
-        return this.project.todos.find(todo => todo.id === id);
+        return project.todos.find(todo => todo.id === id);
     }
 
     updateTodo = (id, projectId, property, value) => {
