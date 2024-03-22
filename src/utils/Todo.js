@@ -15,11 +15,12 @@ class Todo {
         if (!this.storage.readAll()) {
             this.storage.initialize();
         }
+        this.getAll();
     }
 
 
     printProjects = () => {
-        console.log(projects);
+        console.log(this.projects);
     }
 
     setTodo = (incomingTodo) => {
@@ -29,6 +30,16 @@ class Todo {
                 throw new Error('Todo does not match format');
             }
         }
+        const project = this.projects.find(project => project.id === incomingTodo.projectId);
+        let todoFound = false;
+        project.todos.forEach(todo => {
+            if (todo.id === incomingTodo.id) {
+                todo === incomingTodo;
+                todoFound = true;
+                return;
+            }
+        });
+        if (!todoFound) project.todos.push(incomingTodo);
         storage.setTodo(incomingTodo);
     }
 
@@ -42,26 +53,57 @@ class Todo {
     }
 
     getAll = () => {
-        this.projects = storage.readAll();
-    }
-
-    getTodo = (todoId) => {
-        // get one todo
+        this.projects = this.storage.readAll();
     }
 
     getProject = (projectId) => {
-        // get all todos from project
-
-        // return todos and project data
+        return this.projects.find(project => project.id === projectId);
     }
 
-    updateTodo = (id, property) => {
-        // update a todo or project property
+    getTodo(id, projectId) {
+        const project = this.projects.find(project => project.id === projectId);
+        return this.project.todos.find(todo => todo.id === id);
     }
 
-    deleteTodo = (id) => {
-        // delete todo or project
+    updateTodo = (id, projectId, property, value) => {
+        let todo = getTodo(id, projectId);
+        todo[property] = value;
+        try {
+            setTodo(todo)
+        } catch (exception) {
+            throw exception;
+        }
     }
+
+    deleteTodo = (incomingTodo) => {
+        const project = this.projects.find(project => project.id === incomingTodo.projectId);
+        let indexToRemove = -1;
+        project.todos.forEach((todo, index) => {
+            if (todo.id === incomingTodo.id) {
+                todo === incomingTodo;
+                indexToRemove = index;
+                return
+            }
+        });
+        if (indexToRemove >= 0) {
+            project.todos = project.todos.splice(indexToRemove, 1);
+            this.storage.setProject(project);
+        }
+    }
+
+    deleteProject = (incomingProject) => {
+        let indexToRemove = -1;
+        this.projects.forEach((project, index) => {
+            if (project.id === incomingProject.id) {
+                indexToRemove = index;
+                return;
+            }
+        });
+        if (indexToRemove === -1) return;
+        this.projects.splice(indexToRemove, 1);
+        this.storage.deleteProject(incomingProject, indexToRemove);
+    }
+
 }
 
 const todo = new Todo();

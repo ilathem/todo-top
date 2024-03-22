@@ -51,7 +51,7 @@ class LocalStorage {
     setProject(incomingProject) {
         const projects = JSON.parse(window.localStorage.getItem('projects'));
         let saved = false;
-        console.log(projects);
+        // console.log(projects);
         for (const project of projects) {
             if (project.id === incomingProject.id) {
                 project = incomingProject;
@@ -63,6 +63,15 @@ class LocalStorage {
             saved = true;
         }
         if (saved) {
+            window.localStorage.setItem('projects', JSON.stringify(projects));
+        }
+    }
+
+    deleteProject(incomingProject, indexToRemove) {
+        console.log(`deleting ${incomingProject.id}, index is ${indexToRemove}`);
+        let projects = JSON.parse(window.localStorage.getItem('projects'));
+        if (projects[indexToRemove].id === incomingProject.id) {
+            projects.splice(indexToRemove, 1);
             window.localStorage.setItem('projects', JSON.stringify(projects));
         }
     }
@@ -129,6 +138,11 @@ class Storage {
         }
     }
 
+    deleteProject(incomingProject, indexToRemove) {
+        for (const container of this.#storageMediums) {
+            container.deleteProject(incomingProject, indexToRemove);
+        }
+    }
 
 }
 
