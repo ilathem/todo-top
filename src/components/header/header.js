@@ -1,5 +1,5 @@
 import './header.css'
-import { todo } from '../../index.js';
+import todo from '../../utils/Todo';
 
 export default function generateHeader() {
     const title = document.createElement('h1');

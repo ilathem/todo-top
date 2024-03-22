@@ -52,6 +52,7 @@ interface checklistItem {
 }
 
 interface todo {
+  projectId: number,
   id: number,
   description: string,
   dueDate: Date,
