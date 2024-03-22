@@ -1,0 +1,19 @@
+.projectContainer {
+    border: 2px solid rgba(172, 172, 172, 0.72);
+    width: max-content;
+    margin: 2em auto;
+    padding: 2em;
+    border-radius: 10px;
+    transition: border 250ms;
+    cursor: pointer;
+    text-align: center;
+}
+
+.projectContainer:hover {
+    border: 2px solid rgba(235, 235, 235, 0.72);
+}
+
+.projectTitle {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}

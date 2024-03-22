@@ -54,6 +54,7 @@ class Todo {
 
     getAll = () => {
         this.projects = this.storage.readAll();
+        return this.projects;
     }
 
     getProject = (projectId) => {

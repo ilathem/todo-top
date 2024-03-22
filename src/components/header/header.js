@@ -7,5 +7,5 @@ export default function generateHeader() {
     const header = document.createElement('div');
     header.classList.add('header');
     header.appendChild(title);
-    document.querySelector('body').appendChild(header);
+    document.querySelector('header').appendChild(header);
 }
