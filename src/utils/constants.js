@@ -4,8 +4,8 @@ const Priority  = Object.freeze({
   high: 2
 });
 const epochtime = Date.now();
-export const seedData = {
-    projects: [
+export const seedData = 
+    [
         {
             name: 'default',
             id: epochtime,
@@ -67,10 +67,11 @@ export const seedData = {
             ]
         }
     ]
-}
+
 
 export const todoInterface = {
     id: 'number',
+    projectId: 'number',
     description: 'string',
     dueDate: 'number',
     priority: 'number',
@@ -78,13 +79,13 @@ export const todoInterface = {
     checklist: 'object', // TODO: checklist check
 };
 
-export const defaultChecklistItem = {
+export const checklistItemInterface = {
     done: false,
     description: '',
 }
 
-export const defaultProject = {
-    id: -1,
-    name: 'default',
-    todos: [],
+export const projectInterface = {
+    id: 'number',
+    name: 'string',
+    todos: 'object',
 }

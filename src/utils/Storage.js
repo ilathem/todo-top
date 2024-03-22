@@ -25,22 +25,48 @@ class LocalStorage {
 
     setTodo(incomingTodo) {
         const projects = JSON.parse(window.localStorage.getItem('projects'))
+        let saved = false;
         for (const project of projects) {
             if (project.id === incomingTodo.projectId) {
                 for (let i = 0; i < project.todos.length; i++) {
                     let todo = project.todos[i];
                     if (todo.id === incomingTodo.id) {
                         todo = incomingTodo; 
-                        return true;
+                        saved = true;
+                        break;
                     }
                 }
-                project.todos.push(incomingTodo);
-                return true;
+                if (!saved) {
+                    project.todos.push(incomingTodo);
+                    saved = true;
+                }
             }
         }
-        window.localStorage.setItem('projects', JSON.stringify(projects));
+        if (saved) {
+            window.localStorage.setItem('projects', JSON.stringify(projects));
+        }
         return false;
     }
+
+    setProject(incomingProject) {
+        const projects = JSON.parse(window.localStorage.getItem('projects'));
+        let saved = false;
+        console.log(projects);
+        for (const project of projects) {
+            if (project.id === incomingProject.id) {
+                project = incomingProject;
+                saved = true;
+            }
+        }
+        if (!saved) {
+            projects.push(incomingProject);
+            saved = true;
+        }
+        if (saved) {
+            window.localStorage.setItem('projects', JSON.stringify(projects));
+        }
+    }
+
 }
 
 class Storage {
@@ -96,6 +122,13 @@ class Storage {
         }
         return containerOutput;
     }
+
+    setProject(project) {
+        for (const container of this.#storageMediums) {
+            container.setProject(project);
+        }
+    }
+
 
 }
 

@@ -33,7 +33,12 @@ class Todo {
     }
 
     createProject = (name) => {
-        // create project 
+        const project = {
+            name,
+            id: Date.now(),
+            todos: [],
+        }
+        this.storage.setProject(project);
     }
 
     getAll = () => {
