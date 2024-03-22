@@ -19,6 +19,14 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Todos',
+            templateContent: `
+                <html>
+                    <body>
+                        <header></header>
+                        <main></main>
+                    </body>
+                </html>
+            `
         }),
     ],
 };
