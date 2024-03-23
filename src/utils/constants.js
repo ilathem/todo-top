@@ -89,3 +89,8 @@ export const projectInterface = {
     name: 'string',
     todos: 'object',
 }
+export const priorityLevels = {
+    0 : 'Low',
+    1 : 'Normal',
+    2 : 'Urgent'
+}
