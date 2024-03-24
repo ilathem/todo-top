@@ -4,6 +4,23 @@
 
 ## Planning
 
+### Todo: 
+
+#### Create new...
+
+- Style the input field in element.css
+- Style the create new todo / create new project modals
+- animate in the modals when the buttons are clicked
+- implement create new todo/project and the closing of modals
+
+#### Existing todos...
+
+- implement way to clear todos once finished
+- implement way to cross off checklist items (strikethrough style)
+- implement way to edit existing todos
+(using the create new modal)
+- implement way to clear projects
+
 ### Features
 
 - Todo Item:
