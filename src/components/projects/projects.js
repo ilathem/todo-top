@@ -1,6 +1,7 @@
 import Todo from "../../utils/Todo";
 import { priorityLevels } from "../../utils/constants";
 import './projects.css';
+import { createElement, createTextElement } from "../element/element";
 
 export default () => {
     const container = document.createElement('div');
@@ -17,23 +18,6 @@ export default () => {
         container.appendChild(projectContainer);
     }) 
     document.querySelector('main').appendChild(container);
-}
-
-const createTextElement = (type, css, parent, text) => {
-    const element = createElement(type, css, parent);
-    element.innerText = text;
-    return element;
-}
-
-const createElement = (type, css, parent) => {
-    const element = document.createElement(type);
-    element.classList.add(css);
-    if (typeof parent === 'string') {
-        document.querySelector(parent).appendChild(element);
-    } else {
-        parent.appendChild(element);
-    }
-    return element;
 }
 
 const createTodo = (todo) => {
