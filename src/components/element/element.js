@@ -1,14 +1,17 @@
 import './element.css';
 
-export const createTextElement = (type, css, parent, text) => {
-    const element = createElement(type, css, parent);
+export const createTextElement = (type, css, parent, text, attributes = {}) => {
+    const element = createElement(type, css, parent, attributes);
     element.innerText = text;
     return element;
 }
 
-export const createElement = (type, css, parent) => {
+export const createElement = (type, css, parent, attributes = {}) => {
     const element = document.createElement(type);
     element.classList.add(css);
+    for (const attribute in attributes) {
+        element.setAttribute(attribute, attributes[attribute])
+    }
     if (typeof parent === 'string') {
         document.querySelector(parent).appendChild(element);
     } else {
@@ -18,14 +21,24 @@ export const createElement = (type, css, parent) => {
 }
 
 export const createInput = (
+    type,
     parent,
     labelText,
     onChange,
+    name = '',
 ) => {
-    const input = createElement('input', 'input', parent);
-    createTextElement('label', 'label', input, labelText);
-    input.addEventListener('keyup', (e) => onChange(e.target.value));
-    return input;
+    const inputDiv = createElement('div', 'inputDiv', parent);
+   createTextElement('label', 'label', inputDiv, labelText,
+        {
+            for: labelText
+        }
+    );
+    const input = createElement('input', 'input', inputDiv);
+    input.type = type;
+    input.id = labelText;
+    if (name) input.name = name;
+    input.addEventListener('input', (e) => onChange(e.target.value));
+    return inputDiv;
 }
 
 export const createButton = (parent, text, onClick) => {

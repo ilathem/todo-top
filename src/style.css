@@ -8,4 +8,8 @@ body {
     background-color: #040911;
     color: rgb(190, 202, 202);
     font-family: 'Chilanka', cursive;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

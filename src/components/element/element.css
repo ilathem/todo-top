@@ -17,3 +17,29 @@
     color: white;
     box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, .3);
 }
+
+.inputDiv {
+    margin-bottom: 2rem;
+    /* border: 2px solid pink; */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    background: none;
+    border: 1px solid rgba(172, 172, 172, 0.72);
+    border-radius: 5px;
+    padding: .25rem;
+    color: rgb(190, 202, 202);
+    font-size: 1.25rem;
+    font-family: 'Chilanka', cursive;
+}
+
+input::-webkit-calendar-picker-indicator {
+    background-image: url('../../../icons8-timeline-week-24.png');
+}
+
+.label {
+    color: rgb(190, 202, 202);
+}
