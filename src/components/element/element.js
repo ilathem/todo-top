@@ -38,7 +38,7 @@ export const createInput = (
     input.id = labelText;
     if (name) input.name = name;
     input.addEventListener('input', (e) => onChange(e.target.value));
-    return inputDiv;
+    return input;
 }
 
 export const createButton = (parent, text, onClick) => {
