@@ -124,16 +124,21 @@ const addTodoForm = (parent) => {
         checklistDiv,
         'click/tap to remove items',
     );
-    const checklistInput = createInput(
+    const [checklistInput, checklistInputDiv] = createInput(
         'text',
         parent,
         'Add new checklist item',
         () => { }
     )
     createButton(
-        parent,
+        checklistInputDiv,
         'Add Item',
         () => addChecklistItem(checklistInput.value)
+    )
+    createButton(
+        parent,
+        'Create Todo',
+        () => createTodo()
     )
 }
 

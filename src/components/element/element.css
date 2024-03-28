@@ -4,7 +4,7 @@
     border: 2px solid rgba(172, 172, 172, 0.72);
     color: rgb(190, 202, 202);
     padding: 1em 2em;
-    margin: 0 1em;
+    margin: .5em 1em;
     border-radius: 10px;
     transition: all 200ms;
     cursor: pointer;
@@ -19,11 +19,12 @@
 }
 
 .inputDiv {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     /* border: 2px solid pink; */
     text-align: left;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .input {
