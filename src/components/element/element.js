@@ -1,7 +1,15 @@
 import './element.css';
 
-export const createTextElement = (type, css, parent, text, attributes = {}) => {
+export const createTextElement = (
+    type, 
+    css, 
+    parent, 
+    text, 
+    attributes = {},
+    onClick = () => {},
+) => {
     const element = createElement(type, css, parent, attributes);
+    element.addEventListener('click', e => onClick(e));
     element.innerText = text;
     return element;
 }

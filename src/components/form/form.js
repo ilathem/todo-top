@@ -25,23 +25,51 @@ const updateForm = (key, value) => {
 }
 
 const addChecklistItem = (value) => {
-    data.checklist ?
-        updateForm('checklist', [...data.checklist, {
-            done: false,
-            description: value
-        }])
-        :
+    let isADuplicate = false;
+    if (data.checklist) { 
+        data.checklist.forEach(item => {
+            if (item.description === value) 
+                isADuplicate = true;
+                return;
+        })
+        if (!isADuplicate) {
+            updateForm('checklist', [...data.checklist, {
+                done: false,
+                description: value
+            }])
+        }
+    } else {
         updateForm('checklist', [{
             done: false,
             description: value
         }])
+    }
     if (!checklistDiv) return;
+    if (isADuplicate) return;
     createTextElement(
         'p',
         'checklistItem',
         checklistDiv,
-        value
+        value,
+        {},
+        (event) => toggleChecklistItem(event)
     )
+
+}
+
+const toggleChecklistItem = event => {
+    console.log(event.target.innerText);
+    for (let i = 0; i < data.checklist.length; i++) {
+        if (data.checklist[i].description === event.target.innerText) {
+            data.checklist[i].done = !data.checklist[i].done;
+            data.checklist[i].done ?
+                event.target.classList.add('checklistItemDone')
+                :
+                event.target.classList.remove('checklistItemDone')
+        }
+    }
+    console.log(event);
+    console.log(data);
 }
 
 const openContainer = (type) => {
@@ -63,6 +91,10 @@ const openContainer = (type) => {
     else addProjectForm(container);
 }
 
+const createTodo = () => {
+    console.log(data);
+}
+
 const addTodoForm = (parent) => {
     createInput(
         'text',
@@ -72,9 +104,9 @@ const addTodoForm = (parent) => {
     );
     createInput(
         'datetime-local',
-        parent, 
-        'Due Date/Time (leave blank if none)', 
-        dueDate => updateForm('due', dueDate) 
+        parent,
+        'Due Date/Time (leave blank if none)',
+        dueDate => updateForm('due', dueDate)
     );
     const radioDiv = createElement('div', 'radioDiv', parent);
     const radioDivTitle = createTextElement(
@@ -111,7 +143,7 @@ const addTodoForm = (parent) => {
         'Notes',
         text => updateForm('notes', text)
     )
-    checklistDiv = createElement('div', [ 'checklistDiv' ], parent);
+    checklistDiv = createElement('div', ['checklistDiv'], parent);
     createTextElement(
         'p',
         'checklistTitle',
@@ -122,7 +154,7 @@ const addTodoForm = (parent) => {
         'p',
         'checklistsubTitle',
         checklistDiv,
-        'click/tap to remove items',
+        'click/tap to mark done',
     );
     const [checklistInput, checklistInputDiv] = createInput(
         'text',

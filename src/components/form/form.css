@@ -1,3 +1,22 @@
 .customChecklist {
     margin-bottom: 0;
 }
+
+.checklistItem {
+    cursor: pointer;
+    transition: all 250ms;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    border: .5px solid rgba(255, 255, 255, 0);
+    padding-top: .25em;
+}
+
+.checklistItem:hover {
+    color: white;
+    border: .5px solid rgba(255, 255, 255, .25);
+}
+    
+
+.checklistItemDone {
+    text-decoration-line: line-through;
+}
