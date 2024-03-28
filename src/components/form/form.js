@@ -1,3 +1,4 @@
+import './form.css';
 import {
     createElement,
     createTextElement,
@@ -110,7 +111,7 @@ const addTodoForm = (parent) => {
         'Notes',
         text => updateForm('notes', text)
     )
-    checklistDiv = createElement('div', 'checklistDiv', parent);
+    checklistDiv = createElement('div', [ 'checklistDiv' ], parent);
     createTextElement(
         'p',
         'checklistTitle',

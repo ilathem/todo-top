@@ -8,6 +8,11 @@ export const createTextElement = (type, css, parent, text, attributes = {}) => {
 
 export const createElement = (type, css, parent, attributes = {}) => {
     const element = document.createElement(type);
+    if (css.length && typeof css === 'object') { // is an array
+        for (let i = 0; i < css.length; i++) {
+            element.classList.add(css[i]);
+        }
+    } 
     element.classList.add(css);
     for (const attribute in attributes) {
         element.setAttribute(attribute, attributes[attribute])
