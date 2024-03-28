@@ -8,8 +8,7 @@
 
 #### Create new...
 
-- Style the input field in element.css
-- Style the create new todo / create new project modals
+- implement project selector in new todo
 - animate in the modals when the buttons are clicked
 - implement create new todo/project and the closing of modals
 
