@@ -83,6 +83,16 @@ class Todo {
     return this.projects.map((project) => project.name);
   };
 
+  getProjectNames = (projectId) => {
+    let projectNames = [];
+    this.projects.map((project) => {
+      if (project.id === projectId) {
+        projectNames.push(project.name);
+      }
+    });
+    return projectNames;
+  };
+
   getTodo(id, projectId) {
     const project = this.projects.find((project) => project.id === projectId);
     return project.todos.find((todo) => todo.id === id);

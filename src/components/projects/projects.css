@@ -1,26 +1,64 @@
 .projectContainer {
-    border: 2px solid rgba(172, 172, 172, 0.72);
-    width: max-content;
-    margin: 2em auto;
-    padding: 2em;
-    border-radius: 10px;
-    transition: border 100ms;
-    cursor: pointer;
-    text-align: center;
+  border: 2px solid rgba(172, 172, 172, 0.72);
+  width: max-content;
+  margin: 2em auto;
+  padding: 2em;
+  border-radius: 10px;
+  transition: border 100ms;
+  text-align: center;
 }
 
 .projectContainer:hover {
-    border: 2px solid rgba(235, 235, 235, 0.72);
+  border: 2px solid rgba(235, 235, 235, 0.72);
 }
 
 .projectTitle {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
 }
 
 .todoContainer {
-    margin-top: 1em;
-    background-color: rgba(100, 100, 100, 0.2);
-    padding: 1em;
-    border-radius: 10px;
+  margin-top: 1em;
+  cursor: pointer;
+  background-color: rgba(100, 100, 100, 0.1);
+  padding: .5em;
+  border-radius: 10px;
+  transition: all 300ms, scale 100ms;
+  border: 2px solid rgba(235, 235, 235, 0);
+  box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, 0.2);
+}
+
+.todoContainer > p {
+  margin: .25em 0;
+}
+
+.todoContainer:hover {
+  background-color: rgba(100, 100, 100, 0.3);
+  border: 2px solid rgba(235, 235, 235, 0.5);
+  color: white;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 20px 30px;
+  scale: 1.1;
+}
+
+.subsection {
+  border: 2px solid rgba(235, 235, 235, 0.2);
+  border-radius: 5px;
+  padding: 0.25em;
+  margin: 0.25em 0;
+}
+
+.subsectionHeader {
+  text-decoration: underline;
+}
+
+.priorityLow {
+  color: #4644BB;
+}
+
+.priorityNormal {
+  color: #44BB46;
+}
+
+.priorityUrgent {
+  color: #BB4644;
 }
