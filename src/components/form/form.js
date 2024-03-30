@@ -10,7 +10,6 @@ import todo from "../../utils/Todo";
 import Projects from "../projects/projects";
 
 export const openCreateTodo = () => {
-  console.log("create new todo");
   openContainer("todo");
 };
 
@@ -87,12 +86,21 @@ const openContainer = (type) => {
   else addProjectForm(container);
 };
 
-const createTodo = (parent) => {
-  data.id = Date.now();
-  todo.setTodo(data);
+const removeCreateTodoModal = (parent) => {
   parent.remove();
   document.querySelector("main").innerHTML = "";
   Projects();
+};
+
+const cancelTodo = (parent) => {
+  data = {};
+  removeCreateTodoModal(parent);
+};
+
+const createTodo = () => {
+  data.id = Date.now();
+  todo.setTodo(data);
+  removeCreateTodoModal(parent);
 };
 
 const addTodoForm = (parent) => {
@@ -164,6 +172,7 @@ const addTodoForm = (parent) => {
     addChecklistItem(checklistInput.value),
   );
   createButton(parent, "Create Todo", () => createTodo(parent));
+  createButton(parent, "Cancel", () => cancelTodo(parent));
 };
 
 const addProjectForm = (parent) => {};

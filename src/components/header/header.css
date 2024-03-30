@@ -11,50 +11,5 @@
     align-items: center;
 }
 
-.newContainer {
-    position: absolute;
-    top: 5%;
-    border: 2px solid rgba(235, 235, 235, 0.72);
-    border-radius: 10px;
-    box-shadow: rgba(255, 255, 255, 0.2) 0px 20px 30px;
-    backdrop-filter: blur(10px);
-    padding: 2em;
-    text-align: center;
-}
 
-.newContainerTitle {
-    font-size: 2rem;
-    margin-bottom: .5rem;
-}
 
-.radioDiv {
-    display: flex;
-    flex-direction: column;
-}
-
-.radioTitle {
-    margin-bottom: .5rem;
-    font-size: 1.25rem;
-}
-
-.radioSelections {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.checklistTitle {
-    font-size: 1.25rem;
-}
-
-.checklistsubTitle {
-    font-size: .9rem;
-    margin-bottom: .5em;
-}
-
-.checklistDiv {
-    margin-bottom: 2em;
-    border-radius: 5px;
-    border: 1px solid rgba(172, 172, 172, 0.72);
-    padding: .5em;
-}
