@@ -8,7 +8,6 @@ import {
 } from "../element/element";
 import todo from "../../utils/Todo";
 import Projects from "../projects/projects";
-import projects from "../projects/projects";
 
 export const openCreateTodo = () => {
   openContainer("todo");

@@ -17,9 +17,5 @@ export default function generateHeader() {
     openCreateProject(),
   );
 
-  // For testing...
-  openCreateProject();
-  // delete above line when done with stying
-
   document.querySelector("header").appendChild(header);
 }

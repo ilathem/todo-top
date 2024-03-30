@@ -19,10 +19,6 @@ to the gh-pages branch, which automatically deploys to the gh-pages site.
 
 ### Todo: 
 
-#### Create new...
-
-- implement create new todo/project and the closing of modals
-
 #### Existing todos...
 
 - implement way to clear todos once finished
