@@ -1,87 +1,87 @@
 .button {
-    background: none;
-    outline: none;
-    border: 2px solid rgba(172, 172, 172, 0.72);
-    color: rgb(190, 202, 202);
-    padding: 1em 2em;
-    margin: .5em 1em;
-    border-radius: 10px;
-    transition: all 200ms;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 1rem;
+  background: none;
+  outline: none;
+  border: 2px solid rgba(172, 172, 172, 0.72);
+  color: rgb(190, 202, 202);
+  padding: 1em 2em;
+  margin: 0.5em 1em;
+  border-radius: 10px;
+  transition: all 200ms;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 .button:hover {
-    border: 2px solid white;
-    color: white;
-    box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, .3);
+  border: 2px solid white;
+  color: white;
+  box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, 0.3);
 }
 
 .inputDiv {
-    margin-bottom: 2rem;
-    /* border: 2px solid pink; */
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin-bottom: 2rem;
+  /* border: 2px solid pink; */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .input {
-    background: none;
-    border: 1px solid rgba(172, 172, 172, 0.72);
-    border-radius: 5px;
-    padding: .25rem;
-    color: rgb(190, 202, 202);
-    font-size: 1.25rem;
-    font-family: 'Chilanka', cursive;
+  background: none;
+  border: 1px solid rgba(172, 172, 172, 0.72);
+  border-radius: 5px;
+  padding: 0.25rem;
+  color: rgb(190, 202, 202);
+  font-size: 1.25rem;
+  font-family: "Chilanka", cursive;
 }
 
 input::-webkit-calendar-picker-indicator {
-    background-image: url('../../../icons8-timeline-week-24.png');
+  background-image: url("../../../icons8-timeline-week-24.png");
 }
 
 .label {
-    color: rgb(190, 202, 202);
+  color: rgb(190, 202, 202);
 }
 
 .dropdownDiv {
-    border: 1px solid rgba(172, 172, 172, 0.72);
-    border-radius: 5px;
-    font-size: 1.25rem;
-    margin-bottom: 1em;
-    padding: .5em 1em;
-    transition: all 500ms;
-    position: relative;
+  border: 1px solid rgba(172, 172, 172, 0.72);
+  border-radius: 5px;
+  font-size: 1.25rem;
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+  transition: all 500ms;
+  position: relative;
 }
 
 .dropdownLabel {
-    position: absolute;
-    top: -1.25rem;
-    color: rgb(190, 202, 202);
-    font-size: 1rem;
-    width: 100%;
-    left: 0;
+  position: absolute;
+  top: -1.25rem;
+  color: rgb(190, 202, 202);
+  font-size: 1rem;
+  width: 100%;
+  left: 0;
 }
 
 .dropdownPrompt {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .option {
-    cursor: pointer;
-    border: 1px solid rgba(172, 172, 172, 0.72);
-    border-radius: 5px;
-    margin: .25em 0;
-    padding: .5em 0;
+  cursor: pointer;
+  border: 1px solid rgba(172, 172, 172, 0.72);
+  border-radius: 5px;
+  margin: 0.25em 0;
+  padding: 0.5em 0;
 }
 
 .dropdownPrompt:hover,
 .option:hover {
-    color: white;
+  color: white;
 }
 
 .option:hover {
-    border: 1px solid white;
-    box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, .3);
+  border: 1px solid white;
+  box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, 0.3);
 }
