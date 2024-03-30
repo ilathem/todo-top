@@ -1,70 +1,71 @@
 .customChecklist {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .checklistItem {
-    cursor: pointer;
-    transition: all 250ms;
-    font-size: 1.25rem;
-    border-radius: 5px;
-    border: .5px solid rgba(255, 255, 255, 0);
-    padding-top: .25em;
+  cursor: pointer;
+  transition: all 250ms;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  border: 0.5px solid rgba(255, 255, 255, 0);
+  padding-top: 0.25em;
 }
 
 .checklistItem:hover {
-    color: white;
-    border: .5px solid rgba(255, 255, 255, .25);
+  color: white;
+  border: 0.5px solid rgba(255, 255, 255, 0.25);
 }
-    
 
 .checklistItemDone {
-    text-decoration-line: line-through;
+  text-decoration-line: line-through;
 }
 
 .newContainer {
-    position: absolute;
-    top: 5%;
-    border: 2px solid rgba(235, 235, 235, 0.72);
-    border-radius: 10px;
-    box-shadow: rgba(255, 255, 255, 0.2) 0px 20px 30px;
-    backdrop-filter: blur(10px);
-    padding: 2em;
-    text-align: center;
+  position: absolute;
+  top: 5%;
+  border: 2px solid rgba(235, 235, 235, 0.72);
+  border-radius: 10px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 20px 30px;
+  backdrop-filter: blur(10px);
+  padding: 2em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .newContainerTitle {
-    font-size: 2rem;
-    margin-bottom: .5rem;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .radioDiv {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .radioTitle {
-    margin-bottom: .5rem;
-    font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
 .radioSelections {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .checklistTitle {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .checklistsubTitle {
-    font-size: .9rem;
-    margin-bottom: .5em;
+  font-size: 0.9rem;
+  margin-bottom: 0.5em;
 }
 
 .checklistDiv {
-    margin-bottom: 2em;
-    border-radius: 5px;
-    border: 1px solid rgba(172, 172, 172, 0.72);
-    padding: .5em;
+  margin-bottom: 2em;
+  border-radius: 5px;
+  border: 1px solid rgba(172, 172, 172, 0.72);
+  padding: 0.5em;
 }
