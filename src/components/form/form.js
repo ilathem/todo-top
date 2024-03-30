@@ -8,6 +8,7 @@ import {
 } from "../element/element";
 import todo from "../../utils/Todo";
 import Projects from "../projects/projects";
+import projects from "../projects/projects";
 
 export const openCreateTodo = () => {
   openContainer("todo");
@@ -86,21 +87,26 @@ const openContainer = (type) => {
   else addProjectForm(container);
 };
 
-const removeCreateTodoModal = (parent) => {
+const removeCreateModal = (parent) => {
   parent.remove();
   document.querySelector("main").innerHTML = "";
   Projects();
 };
 
-const cancelTodo = (parent) => {
+const cancelCreate = (parent) => {
   data = {};
-  removeCreateTodoModal(parent);
+  removeCreateModal(parent);
 };
 
-const createTodo = () => {
+const createProject = (parent) => {
+  todo.createProject(data.name);
+  removeCreateModal(parent);
+};
+
+const createTodo = (parent) => {
   data.id = Date.now();
   todo.setTodo(data);
-  removeCreateTodoModal(parent);
+  removeCreateModal(parent);
 };
 
 const addTodoForm = (parent) => {
@@ -172,7 +178,13 @@ const addTodoForm = (parent) => {
     addChecklistItem(checklistInput.value),
   );
   createButton(parent, "Create Todo", () => createTodo(parent));
-  createButton(parent, "Cancel", () => cancelTodo(parent));
+  createButton(parent, "Cancel", () => cancelCreate(parent));
 };
 
-const addProjectForm = (parent) => {};
+const addProjectForm = (parent) => {
+  createInput("text", parent, "Project Name", (text) =>
+    updateForm("name", text),
+  );
+  createButton(parent, "Create Project", () => createProject(parent));
+  createButton(parent, "Cancel", () => cancelCreate(parent));
+};
