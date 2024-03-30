@@ -92,8 +92,9 @@ const openContainer = (type) => {
     else addProjectForm(container);
 }
 
-const createTodo = () => {
-    console.log(data);
+const createTodo = (parent) => {
+    todo.setTodo(data);
+    parent.remove()
 }
 
 const addTodoForm = (parent) => {
@@ -182,7 +183,7 @@ const addTodoForm = (parent) => {
     createButton(
         parent,
         'Create Todo',
-        () => createTodo()
+        () => createTodo(parent)
     )
 }
 

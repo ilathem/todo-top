@@ -28,7 +28,7 @@ export default function generateHeader() {
     );
 
     // For testing...
-    openCreateTodo();
+    // openCreateTodo();
     // delete above line when done with stying
 
     document.querySelector('header').appendChild(header);

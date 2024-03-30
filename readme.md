@@ -21,8 +21,6 @@ to the gh-pages branch, which automatically deploys to the gh-pages site.
 
 #### Create new...
 
-- implement project selector in new todo
-- animate in the modals when the buttons are clicked
 - implement create new todo/project and the closing of modals
 
 #### Existing todos...
