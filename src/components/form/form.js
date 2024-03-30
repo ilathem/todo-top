@@ -4,6 +4,7 @@ import {
     createTextElement,
     createInput,
     createButton,
+    createDropdown,
 } from '../element/element';
 
 export const openCreateTodo = () => {
@@ -26,11 +27,11 @@ const updateForm = (key, value) => {
 
 const addChecklistItem = (value) => {
     let isADuplicate = false;
-    if (data.checklist) { 
+    if (data.checklist) {
         data.checklist.forEach(item => {
-            if (item.description === value) 
+            if (item.description === value)
                 isADuplicate = true;
-                return;
+            return;
         })
         if (!isADuplicate) {
             updateForm('checklist', [...data.checklist, {
@@ -102,6 +103,14 @@ const addTodoForm = (parent) => {
         'Description',
         text => updateForm('description', text)
     );
+    createDropdown(
+        'Select Project',
+        'Project',
+        ['Default', 'Project 1'],
+        parent,
+        {},
+        output => console.log(`chose ${output}`)
+    )
     createInput(
         'datetime-local',
         parent,

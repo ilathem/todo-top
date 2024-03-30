@@ -14,6 +14,76 @@ export const createTextElement = (
     return element;
 }
 
+export const createDropdown = (
+    prompt,
+    labelText,
+    options,
+    parent,
+    attributes = {},
+    onClick = () => {}
+) => {
+    const dropdownDiv = createElement(
+        'div',
+        'dropdownDiv',
+        parent,
+    );
+    createTextElement(
+        'p',
+        'dropdownLabel',
+        dropdownDiv,
+        labelText
+    )
+    createTextElement(
+        'p',
+        'dropdownPrompt',
+        dropdownDiv,
+        prompt,
+    );
+    let isOpen = false;
+    let selection = prompt;
+    dropdownDiv.addEventListener('click', e => {
+        if (isOpen) {
+            dropdownDiv.innerHTML = '';
+            createTextElement(
+                'p',
+                'dropdownPrompt',
+                dropdownDiv,
+                selection,
+            );
+            createTextElement(
+                'p',
+                'dropdownLabel',
+                dropdownDiv,
+                labelText
+            )
+            isOpen = false;
+        } else {
+            dropdownDiv.innerHTML = '';
+            createTextElement(
+                'p',
+                'dropdownLabel',
+                dropdownDiv,
+                labelText
+            )
+            options.forEach(option => {
+                createTextElement(
+                    'p',
+                    'option',
+                    dropdownDiv,
+                    option,
+                    {},
+                    e => {
+                        onClick(e.target.innerText)
+                        selection = e.target.innerText
+                    }
+                )
+            })
+            isOpen = true;
+        }
+    })
+
+}
+
 export const createElement = (type, css, parent, attributes = {}) => {
     const element = document.createElement(type);
     if (css.length && typeof css === 'object') { // is an array
