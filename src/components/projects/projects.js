@@ -31,9 +31,17 @@ const createTodo = (todo) => {
     createTextElement('p', 'todoNotes', container, todo.notes);
     const checklist = createElement('ul', 'todoChecklist', container);
     for (const checklistItem of todo.checklist) {
-        createTextElement('li', `todoChecklistItem ${
-            checklistItem.done ? 'checklistDone' : 'checklistNotDone'
-        }`, checklist, checklistItem.description);
+        createTextElement(
+            'li',
+            [   
+                'todoChecklistItem',
+                `${checklistItem.done ? 
+                    'checklistDone' : 
+                    'checklistNotDone'
+                }`
+            ], 
+            checklist,
+            checklistItem.description);
     }
     container.appendChild(checklist);
     return container;

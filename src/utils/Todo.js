@@ -24,6 +24,8 @@ class Todo {
     }
 
     setTodo = (incomingTodo) => {
+        console.log(incomingTodo);
+        console.log(todoInterface);
         for (const key in todoInterface) { // TODO: add check for checklist
             if (!incomingTodo.hasOwnProperty(key) ||
                 !typeof incomingTodo[key] === todoInterface[key]) {
@@ -40,7 +42,7 @@ class Todo {
             }
         });
         if (!todoFound) project.todos.push(incomingTodo);
-        storage.setTodo(incomingTodo);
+        this.storage.setTodo(incomingTodo);
     }
 
     createProject = (name) => {

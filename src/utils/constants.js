@@ -73,7 +73,7 @@ export const todoInterface = {
     id: 'number',
     projectId: 'number',
     description: 'string',
-    dueDate: 'number',
+    dueDate: 'string',
     priority: 'number',
     notes: 'string',
     checklist: 'object', // TODO: checklist check

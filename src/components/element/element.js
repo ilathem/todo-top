@@ -90,8 +90,9 @@ export const createElement = (type, css, parent, attributes = {}) => {
         for (let i = 0; i < css.length; i++) {
             element.classList.add(css[i]);
         }
-    } 
-    element.classList.add(css);
+    } else {
+        element.classList.add(css)
+    }
     for (const attribute in attributes) {
         element.setAttribute(attribute, attributes[attribute])
     }

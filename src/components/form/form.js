@@ -7,6 +7,7 @@ import {
     createDropdown,
 } from '../element/element';
 import todo from '../../utils/Todo';
+import Projects from '../projects/projects';
 
 export const openCreateTodo = () => {
     console.log('create new todo')
@@ -93,8 +94,11 @@ const openContainer = (type) => {
 }
 
 const createTodo = (parent) => {
+    data.id = Date.now();
     todo.setTodo(data);
     parent.remove()
+    document.querySelector('main').innerHTML = '';
+    Projects();
 }
 
 const addTodoForm = (parent) => {
@@ -119,7 +123,7 @@ const addTodoForm = (parent) => {
         'datetime-local',
         parent,
         'Due Date/Time (leave blank if none)',
-        dueDate => updateForm('due', dueDate)
+        dueDate => updateForm('dueDate', dueDate)
     );
     const radioDiv = createElement('div', 'radioDiv', parent);
     const radioDivTitle = createTextElement(
