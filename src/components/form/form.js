@@ -6,6 +6,7 @@ import {
     createButton,
     createDropdown,
 } from '../element/element';
+import todo from '../../utils/Todo';
 
 export const openCreateTodo = () => {
     console.log('create new todo')
@@ -22,7 +23,6 @@ let checklistDiv = null;
 
 const updateForm = (key, value) => {
     data[key] = value;
-    console.log(data);
 }
 
 const addChecklistItem = (value) => {
@@ -106,10 +106,13 @@ const addTodoForm = (parent) => {
     createDropdown(
         'Select Project',
         'Project',
-        ['Default', 'Project 1'],
+        todo.getProjectNames(),
         parent,
         {},
-        output => console.log(`chose ${output}`)
+        output => {
+            const projectId = todo.getProjectIds(output)[0];
+            updateForm('projectId', projectId);
+        }
     )
     createInput(
         'datetime-local',

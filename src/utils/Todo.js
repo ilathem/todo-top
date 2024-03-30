@@ -61,6 +61,17 @@ class Todo {
         return this.projects.find(project => project.id === projectId);
     }
 
+    getProjectIds = (projectName) => {
+        return this.projects.map(project => {
+            if (project.name === projectName)
+                return project.id
+        });
+    }
+
+    getProjectNames = () => {
+        return this.projects.map(project => project.name)
+    }
+
     getTodo(id, projectId) {
         const project = this.projects.find(project => project.id === projectId);
         return project.todos.find(todo => todo.id === id);
