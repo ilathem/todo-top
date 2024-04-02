@@ -23,31 +23,7 @@ class Todo {
   };
 
   setTodo = (incomingTodo) => {
-    console.log(incomingTodo);
-    console.log(todoInterface);
-    for (const key in todoInterface) {
-      // TODO: add check for checklist
-      if (
-        !incomingTodo.hasOwnProperty(key) ||
-        !typeof incomingTodo[key] === todoInterface[key]
-      ) {
-        throw new Error("Todo does not match format");
-      }
-    }
-    console.log(this.projects);
-    console.log(incomingTodo);
-    const project = this.projects.find(
-      (project) => project.id === incomingTodo.projectId,
-    );
-    let todoFound = false;
-    project.todos.forEach((todo) => {
-      if (todo.id === incomingTodo.id) {
-        todo === incomingTodo;
-        todoFound = true;
-        return;
-      }
-    });
-    if (!todoFound) project.todos.push(incomingTodo);
+    console.log(this.projects)
     this.storage.setTodo(incomingTodo);
   };
 
@@ -79,7 +55,7 @@ class Todo {
     return projectIds;
   };
 
-  getProjectNames = () => {
+  getAllProjectNames = () => {
     return this.projects.map((project) => project.name);
   };
 

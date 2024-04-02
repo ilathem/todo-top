@@ -114,7 +114,7 @@ const createProject = (parent) => {
 };
 
 const createTodo = (parent) => {
-  data.id = Date.now();
+  if (!data.id) data.id = Date.now();
   todo.setTodo(data);
   removeCreateModal(parent);
 };
@@ -132,7 +132,7 @@ const addTodoForm = (parent) => {
   createDropdown(
     projectName || 'Select Project',
     'Project',
-    todo.getProjectNames(),
+    todo.getAllProjectNames(),
     parent,
     {},
     (output) => {
@@ -199,15 +199,17 @@ const addTodoForm = (parent) => {
     checklistDiv,
     'click/tap to mark done'
   );
-  for (const checklistItem of data.checklist) {
-    createTextElement(
-      'p',
-      'checklistItem',
-      checklistDiv,
-      checklistItem.description,
-      {},
-      (event) => toggleChecklistItem(event)
-    );
+  if (data.checklist) {
+    for (const checklistItem of data.checklist) {
+      createTextElement(
+        'p',
+        'checklistItem',
+        checklistDiv,
+        checklistItem.description,
+        {},
+        (event) => toggleChecklistItem(event)
+      );
+    }
   }
   const [checklistInput, checklistInputDiv] = createInput(
     'text',
