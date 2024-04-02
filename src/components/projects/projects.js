@@ -3,6 +3,7 @@ import { priorityLevels } from '../../utils/constants';
 import './projects.css';
 import { createElement, createTextElement } from '../element/element';
 import { openExistingTodo } from '../form/form';
+import check from '../../../check.svg';
 
 export default () => {
   const container = document.createElement('div');
@@ -24,22 +25,31 @@ export default () => {
   document.querySelector('main').appendChild(container);
 };
 
-const openTodo = todo => {
+const openTodo = (todo) => {
   openExistingTodo(todo);
-}
+};
 
 const createTodo = (todo) => {
+  const row = document.createElement('row');
+  row.classList.add('row');
   const container = document.createElement('div');
   container.classList.add('todoContainer');
-  container.addEventListener('click', () => openTodo(todo))
+  const markCompleteBtn = document.createElement('img');
+  markCompleteBtn.src = check
+  markCompleteBtn.classList.add('check');
+  markCompleteBtn.addEventListener('click', () => {
+    console.log('check clicked')
+  })
+  row.appendChild(markCompleteBtn);
+  container.addEventListener('click', () => openTodo(todo));
   createTextElement('p', 'todoDescription', container, todo.description);
   if (todo.dueDate) {
-      createTextElement(
-        'p',
-        'todoDue',
-        container,
-        `Due: ${todo.dueDate ? new Date(todo.dueDate).toLocaleString() : 'n/a'}`
-      );
+    createTextElement(
+      'p',
+      'todoDue',
+      container,
+      `Due: ${todo.dueDate ? new Date(todo.dueDate).toLocaleString() : 'n/a'}`
+    );
   }
   createTextElement(
     'p',
@@ -68,5 +78,6 @@ const createTodo = (todo) => {
     }
     container.appendChild(checklistDiv);
   }
-  return container;
+  row.appendChild(container);
+  return row;
 };

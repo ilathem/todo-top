@@ -18,10 +18,10 @@
 }
 
 .todoContainer {
-  margin-top: 1em;
+  /* margin-top: 1em; */
   cursor: pointer;
   background-color: rgba(100, 100, 100, 0.1);
-  padding: .5em;
+  padding: 0.5em;
   border-radius: 10px;
   transition: all 200ms, scale 500ms;
   border: 2px solid rgba(235, 235, 235, 0);
@@ -29,10 +29,12 @@
 }
 
 .todoContainer > p {
-  margin: .25em 0;
+  margin: 0.25em 0;
 }
 
-.todoContainer:hover {
+.todoContainer:hover,
+.check:hover
+{
   background-color: rgba(100, 100, 100, 0.3);
   border: 2px solid rgba(235, 235, 235, 0.5);
   color: white;
@@ -52,13 +54,32 @@
 }
 
 .priorityLow {
-  color: #4644BB;
+  color: #4644bb;
 }
 
 .priorityNormal {
-  color: #44BB46;
+  color: #44bb46;
 }
 
 .priorityUrgent {
-  color: #BB4644;
+  color: #bb4644;
+}
+
+.check {
+  transition: all 200ms, scale 500ms;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border: 2px solid rgba(235, 235, 235, 0.2);
+  border-radius: 10px;
+  padding: 0.5em;
+  margin-right: 1em;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1em 0;
+  /* border: 2px solid white; */
 }
