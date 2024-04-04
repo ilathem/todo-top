@@ -1,7 +1,11 @@
 import Todo from "../../utils/Todo";
 import { priorityLevels } from "../../utils/constants";
 import "./projects.css";
-import { createElement, createTextElement } from "../element/element";
+import {
+  createButton,
+  createElement,
+  createTextElement,
+} from "../element/element";
 import { openExistingTodo } from "../form/form";
 import check from "../../../check.svg";
 import trash from "../../../icons8-trash-48.png";
@@ -21,10 +25,24 @@ export default function Projects() {
     project.todos.forEach((todo) => {
       projectContainer.appendChild(createTodo(todo));
     });
+    createButton(
+      projectContainer,
+      `Delete Project`,
+      () => deleteProject(project),
+      ["removeProjectButton"],
+    );
     container.appendChild(projectContainer);
   });
   document.querySelector("main").appendChild(container);
 }
+
+const deleteProject = (project) => {
+  console.log(`deleting`);
+  console.log(project);
+  Todo.deleteProject(project);
+  document.querySelector("main").innerHTML = "";
+  Projects();
+};
 
 const openTodo = (todo) => {
   openExistingTodo(todo);

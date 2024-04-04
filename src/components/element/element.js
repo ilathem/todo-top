@@ -1,4 +1,4 @@
-import './element.css';
+import "./element.css";
 
 export const createTextElement = (
   type,
@@ -6,10 +6,10 @@ export const createTextElement = (
   parent,
   text,
   attributes = {},
-  onClick = () => {}
+  onClick = () => {},
 ) => {
   const element = createElement(type, css, parent, attributes);
-  element.addEventListener('click', (e) => onClick(e));
+  element.addEventListener("click", (e) => onClick(e));
   element.innerText = text;
   return element;
 };
@@ -20,24 +20,24 @@ export const createDropdown = (
   options,
   parent,
   attributes = {},
-  onClick = () => {}
+  onClick = () => {},
 ) => {
-  const dropdownDiv = createElement('div', 'dropdownDiv', parent);
-  createTextElement('p', 'dropdownLabel', dropdownDiv, labelText);
-  createTextElement('p', 'dropdownPrompt', dropdownDiv, prompt);
+  const dropdownDiv = createElement("div", "dropdownDiv", parent);
+  createTextElement("p", "dropdownLabel", dropdownDiv, labelText);
+  createTextElement("p", "dropdownPrompt", dropdownDiv, prompt);
   let isOpen = false;
   let selection = prompt;
-  dropdownDiv.addEventListener('click', (e) => {
+  dropdownDiv.addEventListener("click", (e) => {
     if (isOpen) {
-      dropdownDiv.innerHTML = '';
-      createTextElement('p', 'dropdownPrompt', dropdownDiv, selection);
-      createTextElement('p', 'dropdownLabel', dropdownDiv, labelText);
+      dropdownDiv.innerHTML = "";
+      createTextElement("p", "dropdownPrompt", dropdownDiv, selection);
+      createTextElement("p", "dropdownLabel", dropdownDiv, labelText);
       isOpen = false;
     } else {
-      dropdownDiv.innerHTML = '';
-      createTextElement('p', 'dropdownLabel', dropdownDiv, labelText);
+      dropdownDiv.innerHTML = "";
+      createTextElement("p", "dropdownLabel", dropdownDiv, labelText);
       options.forEach((option) => {
-        createTextElement('p', 'option', dropdownDiv, option, {}, (e) => {
+        createTextElement("p", "option", dropdownDiv, option, {}, (e) => {
           onClick(e.target.innerText);
           selection = e.target.innerText;
         });
@@ -49,7 +49,7 @@ export const createDropdown = (
 
 export const createElement = (type, css, parent, attributes = {}) => {
   const element = document.createElement(type);
-  if (css.length && typeof css === 'object') {
+  if (css.length && typeof css === "object") {
     // is an array
     for (let i = 0; i < css.length; i++) {
       element.classList.add(css[i]);
@@ -60,7 +60,7 @@ export const createElement = (type, css, parent, attributes = {}) => {
   for (const attribute in attributes) {
     element.setAttribute(attribute, attributes[attribute]);
   }
-  if (typeof parent === 'string') {
+  if (typeof parent === "string") {
     document.querySelector(parent).appendChild(element);
   } else {
     parent.appendChild(element);
@@ -73,15 +73,15 @@ export const createInput = (
   parent,
   labelText,
   onChange,
-  name = '',
-  initialText = '',
-  attributes = {}
+  name = "",
+  initialText = "",
+  attributes = {},
 ) => {
-  const inputDiv = createElement('div', 'inputDiv', parent);
-  createTextElement('label', 'label', inputDiv, labelText, {
+  const inputDiv = createElement("div", "inputDiv", parent);
+  createTextElement("label", "label", inputDiv, labelText, {
     for: labelText,
   });
-  const input = createElement('input', 'input', inputDiv);
+  const input = createElement("input", "input", inputDiv);
   for (const attribute in attributes) {
     input.setAttribute(attribute, attributes[attribute]);
   }
@@ -89,12 +89,14 @@ export const createInput = (
   input.type = type;
   input.id = labelText;
   if (name) input.name = name;
-  input.addEventListener('input', (e) => onChange(e.target.value));
+  input.addEventListener("input", (e) => onChange(e.target.value));
   return [input, inputDiv];
 };
 
-export const createButton = (parent, text, onClick) => {
-  const button = createTextElement('button', 'button', parent, text);
-  button.addEventListener('click', () => onClick());
+export const createButton = (parent, text, onClick, additionalClasses = []) => {
+  let css = ["button"];
+  if (additionalClasses && additionalClasses.length)
+    css = ["button", ...additionalClasses];
+  const button = createTextElement("button", css, parent, text, {}, onClick);
   return button;
 };
