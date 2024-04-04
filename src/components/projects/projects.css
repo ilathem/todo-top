@@ -35,7 +35,7 @@
 }
 
 .todoContainer:hover,
-.check:hover {
+.todoActionButton:hover {
   background-color: rgba(100, 100, 100, 0.3);
   border: 2px solid rgba(235, 235, 235, 0.5);
   color: white;
@@ -43,7 +43,7 @@
   scale: 1.1;
 }
 
-.check:hover {
+.todoActionButton:hover {
   box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, 0.3);
 }
 
@@ -70,7 +70,7 @@
   color: #bb4644;
 }
 
-.check {
+.todoActionButton {
   transition:
     all 200ms,
     scale 500ms;
@@ -80,14 +80,14 @@
   border: 2px solid rgba(235, 235, 235, 0.2);
   border-radius: 10px;
   padding: 0.5em;
-  margin-right: 1em;
+  margin: 0 1em;
 }
 
 .row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding: 1em 0;
   border: 2px solid rgba(235, 235, 235, 0);
   border-radius: 10px;

@@ -1,28 +1,29 @@
-import Todo from '../../utils/Todo';
-import { priorityLevels } from '../../utils/constants';
-import './projects.css';
-import { createElement, createTextElement } from '../element/element';
-import { openExistingTodo } from '../form/form';
-import check from '../../../check.svg';
+import Todo from "../../utils/Todo";
+import { priorityLevels } from "../../utils/constants";
+import "./projects.css";
+import { createElement, createTextElement } from "../element/element";
+import { openExistingTodo } from "../form/form";
+import check from "../../../check.svg";
+import trash from "../../../icons8-trash-48.png";
 
 export default () => {
-  const container = document.createElement('div');
-  container.classList.add('projectsContainer');
+  const container = document.createElement("div");
+  container.classList.add("projectsContainer");
   Todo.getAll().forEach((project) => {
-    const projectContainer = createElement('div', 'projectContainer', 'main');
-    createTextElement('p', 'projectTitle', projectContainer, project.name);
+    const projectContainer = createElement("div", "projectContainer", "main");
+    createTextElement("p", "projectTitle", projectContainer, project.name);
     createTextElement(
-      'p',
-      'projectDate',
+      "p",
+      "projectDate",
       projectContainer,
-      `Created: ${new Date(project.id).toLocaleString()}`
+      `Created: ${new Date(project.id).toLocaleString()}`,
     );
     project.todos.forEach((todo) => {
       projectContainer.appendChild(createTodo(todo));
     });
     container.appendChild(projectContainer);
   });
-  document.querySelector('main').appendChild(container);
+  document.querySelector("main").appendChild(container);
 };
 
 const openTodo = (todo) => {
@@ -30,54 +31,61 @@ const openTodo = (todo) => {
 };
 
 const createTodo = (todo) => {
-  const row = document.createElement('row');
-  row.classList.add('row');
-  const container = document.createElement('div');
-  container.classList.add('todoContainer');
-  const markCompleteBtn = document.createElement('img');
-  markCompleteBtn.src = check
-  markCompleteBtn.classList.add('check');
-  markCompleteBtn.addEventListener('click', () => {
-    console.log('check clicked')
-  })
+  const row = document.createElement("row");
+  row.classList.add("row");
+  const container = document.createElement("div");
+  container.classList.add("todoContainer");
+  const markCompleteBtn = document.createElement("img");
+  markCompleteBtn.src = check;
+  markCompleteBtn.classList.add("todoActionButton");
+  markCompleteBtn.addEventListener("click", () => {
+    console.log("check clicked");
+  });
+  const trashBtn = document.createElement("img");
+  trashBtn.src = trash;
+  trashBtn.classList.add("todoActionButton");
+  trashBtn.addEventListener("click", () => {
+    console.log("trash clicked");
+  });
   row.appendChild(markCompleteBtn);
-  container.addEventListener('click', () => openTodo(todo));
-  createTextElement('p', 'todoDescription', container, todo.description);
+  container.addEventListener("click", () => openTodo(todo));
+  createTextElement("p", "todoDescription", container, todo.description);
   if (todo.dueDate) {
     createTextElement(
-      'p',
-      'todoDue',
+      "p",
+      "todoDue",
       container,
-      `Due: ${todo.dueDate ? new Date(todo.dueDate).toLocaleString() : 'n/a'}`
+      `Due: ${todo.dueDate ? new Date(todo.dueDate).toLocaleString() : "n/a"}`,
     );
   }
   createTextElement(
-    'p',
+    "p",
     `priority${priorityLevels[todo.priority]}`,
     container,
-    `${priorityLevels[todo.priority]} Priority`
+    `${priorityLevels[todo.priority]} Priority`,
   );
   if (todo.notes) {
-    const notesDiv = createElement('div', 'subsection', container);
-    createTextElement('p', 'subsectionHeader', notesDiv, 'Notes:');
-    createTextElement('p', 'todoNotes', notesDiv, todo.notes);
+    const notesDiv = createElement("div", "subsection", container);
+    createTextElement("p", "subsectionHeader", notesDiv, "Notes:");
+    createTextElement("p", "todoNotes", notesDiv, todo.notes);
   }
   if (todo.checklist.length) {
-    const checklistDiv = createElement('div', 'subsection', container);
-    createTextElement('p', 'subsectionHeader', checklistDiv, 'Checklist:');
+    const checklistDiv = createElement("div", "subsection", container);
+    createTextElement("p", "subsectionHeader", checklistDiv, "Checklist:");
     for (const checklistItem of todo.checklist) {
       createTextElement(
-        'p',
+        "p",
         [
-          'todoChecklistItem',
-          `${checklistItem.done ? 'checklistDone' : 'checklistNotDone'}`,
+          "todoChecklistItem",
+          `${checklistItem.done ? "checklistDone" : "checklistNotDone"}`,
         ],
         checklistDiv,
-        checklistItem.description
+        checklistItem.description,
       );
     }
     container.appendChild(checklistDiv);
   }
   row.appendChild(container);
+  row.appendChild(trashBtn);
   return row;
 };
