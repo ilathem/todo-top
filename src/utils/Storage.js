@@ -69,8 +69,8 @@ class LocalStorage {
     }
   }
 
-  updateTodo(incomingTodo) {
-    let projects = JSON.parse();
+  completeTodo(incomingTodo) {
+    let projects = JSON.parse(window.localStorage.getItem("projects"));
     const project = projects.find(
       (project) => project.id === incomingTodo.projectId,
     );
@@ -85,7 +85,7 @@ class LocalStorage {
     if (todoIndex < 0)
       throw new Error(`Error updating todo ${incomingTodo}, todo not found`);
     project.todos.splice(todoIndex, 1);
-    if (project.previousTodos.length) {
+    if (project.previousTodos && project.previousTodos.length) {
       project.previousTodos.push(incomingTodo);
     } else {
       project.previousTodos = [incomingTodo];

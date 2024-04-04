@@ -6,7 +6,7 @@ import { openExistingTodo } from "../form/form";
 import check from "../../../check.svg";
 import trash from "../../../icons8-trash-48.png";
 
-export default () => {
+export default function Projects() {
   const container = document.createElement("div");
   container.classList.add("projectsContainer");
   Todo.getAll().forEach((project) => {
@@ -24,7 +24,7 @@ export default () => {
     container.appendChild(projectContainer);
   });
   document.querySelector("main").appendChild(container);
-};
+}
 
 const openTodo = (todo) => {
   openExistingTodo(todo);
@@ -39,6 +39,9 @@ const createTodo = (todo) => {
   markCompleteBtn.src = check;
   markCompleteBtn.classList.add("todoActionButton");
   markCompleteBtn.addEventListener("click", () => {
+    Todo.completeTodo(todo);
+    document.querySelector("main").innerHTML = "";
+    Projects();
     console.log("check clicked");
   });
   const trashBtn = document.createElement("img");
