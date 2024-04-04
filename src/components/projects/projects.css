@@ -65,7 +65,7 @@
 }
 
 .priority1 {
-  border: 2px solid #AC7809;
+  border: 2px solid #ac7809;
 }
 
 .priority2 {
@@ -86,12 +86,12 @@
 }
 
 .check:hover {
-  border: 2px solid green;
+  border: 2px solid Green;
   box-shadow: 0px 5px 5px 0px rgba(46, 125, 50, 0.5);
 }
 
 .trash:hover {
-  border: 2px solid red;
+  border: 2px solid Red;
   box-shadow: 0px 5px 5px 0px rgba(198, 40, 40, 0.5);
 }
 
