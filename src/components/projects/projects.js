@@ -37,8 +37,8 @@ export default function Projects() {
 }
 
 const deleteProject = (project) => {
-  console.log(`deleting`);
-  console.log(project);
+  // console.log(`deleting`);
+  // console.log(project);
   Todo.deleteProject(project);
   document.querySelector("main").innerHTML = "";
   Projects();
@@ -61,7 +61,7 @@ const createTodo = (todo) => {
     Todo.completeTodo(todo);
     document.querySelector("main").innerHTML = "";
     Projects();
-    console.log("check clicked");
+    // console.log("check clicked");
   });
   const trashBtn = document.createElement("img");
   trashBtn.src = trash;
@@ -71,7 +71,7 @@ const createTodo = (todo) => {
     Todo.deleteTodo(todo);
     document.querySelector("main").innerHTML = "";
     Projects();
-    console.log("trash clicked");
+    // console.log("trash clicked");
   });
   row.appendChild(markCompleteBtn);
   container.addEventListener("click", () => openTodo(todo));

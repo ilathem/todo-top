@@ -19,7 +19,6 @@ export const openCreateTodo = () => {
 };
 
 export const openCreateProject = () => {
-  console.log("create new project");
   openContainer("project");
 };
 
@@ -62,7 +61,6 @@ const addChecklistItem = (value) => {
 };
 
 const toggleChecklistItem = (event) => {
-  console.log(event.target.innerText);
   for (let i = 0; i < data.checklist.length; i++) {
     if (data.checklist[i].description === event.target.innerText) {
       data.checklist[i].done = !data.checklist[i].done;
@@ -71,8 +69,6 @@ const toggleChecklistItem = (event) => {
         : event.target.classList.remove("checklistItemDone");
     }
   }
-  console.log(event);
-  console.log(data);
 };
 
 const openContainer = (type) => {

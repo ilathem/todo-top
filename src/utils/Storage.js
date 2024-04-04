@@ -19,7 +19,7 @@ class LocalStorage {
   }
 
   initialize() {
-    console.log("Initializing from LocalStorage");
+    // console.log("Initializing from LocalStorage");
     window.localStorage.setItem("projects", JSON.stringify(seedData));
   }
 
@@ -61,7 +61,7 @@ class LocalStorage {
   }
 
   deleteProject(incomingProject, indexToRemove) {
-    console.log(`deleting ${incomingProject.id}, index is ${indexToRemove}`);
+    // console.log(`deleting ${incomingProject.id}, index is ${indexToRemove}`);
     let projects = JSON.parse(window.localStorage.getItem("projects"));
     if (projects[indexToRemove].id === incomingProject.id) {
       projects.splice(indexToRemove, 1);
@@ -137,8 +137,8 @@ class Storage {
   }
 
   initialize() {
-    console.log("Initializing from Storage");
-    console.log(this.#storageMediums);
+    // console.log("Initializing from Storage");
+    // console.log(this.#storageMediums);
     for (const container of this.#storageMediums) {
       container.initialize();
     }
