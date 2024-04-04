@@ -22,8 +22,11 @@ class Todo {
     console.log(this.projects);
   };
 
+  completeTodo = (todo) => {
+    this.storage.completeTodo(todo);
+  };
+
   setTodo = (incomingTodo) => {
-    console.log(this.projects)
     this.storage.setTodo(incomingTodo);
   };
 
