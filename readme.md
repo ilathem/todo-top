@@ -21,8 +21,6 @@ to the gh-pages branch, which automatically deploys to the gh-pages site.
 
 #### Existing todos...
 
-- implement way to edit existing todos
-(using the create new modal)
 - implement way to clear projects
 
 ### Features
