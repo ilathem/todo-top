@@ -53,6 +53,7 @@ const createTodo = (todo) => {
   row.classList.add("row");
   const container = document.createElement("div");
   container.classList.add("todoContainer");
+  container.classList.add(`priority${todo.priority}`);
   const markCompleteBtn = document.createElement("img");
   markCompleteBtn.src = check;
   markCompleteBtn.classList.add("todoActionButton");
@@ -83,33 +84,6 @@ const createTodo = (todo) => {
       container,
       `Due: ${todo.dueDate ? new Date(todo.dueDate).toLocaleString() : "n/a"}`,
     );
-  }
-  createTextElement(
-    "p",
-    `priority${priorityLevels[todo.priority]}`,
-    container,
-    `${priorityLevels[todo.priority]} Priority`,
-  );
-  if (todo.notes) {
-    const notesDiv = createElement("div", "subsection", container);
-    createTextElement("p", "subsectionHeader", notesDiv, "Notes:");
-    createTextElement("p", "todoNotes", notesDiv, todo.notes);
-  }
-  if (todo.checklist.length) {
-    const checklistDiv = createElement("div", "subsection", container);
-    createTextElement("p", "subsectionHeader", checklistDiv, "Checklist:");
-    for (const checklistItem of todo.checklist) {
-      createTextElement(
-        "p",
-        [
-          "todoChecklistItem",
-          `${checklistItem.done ? "checklistDone" : "checklistNotDone"}`,
-        ],
-        checklistDiv,
-        checklistItem.description,
-      );
-    }
-    container.appendChild(checklistDiv);
   }
   row.appendChild(container);
   row.appendChild(trashBtn);

@@ -30,7 +30,6 @@
   transition:
     all 200ms,
     scale 500ms;
-  border: 2px solid rgba(235, 235, 235, 0);
   box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, 0.2);
 }
 
@@ -41,10 +40,9 @@
 .todoContainer:hover,
 .todoActionButton:hover {
   background-color: rgba(100, 100, 100, 0.3);
-  border: 2px solid rgba(235, 235, 235, 0.5);
   color: white;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 20px 30px;
-  scale: 1.1;
+  scale: 1.05;
 }
 
 .todoActionButton:hover {
@@ -62,16 +60,16 @@
   text-decoration: underline;
 }
 
-.priorityLow {
-  color: #4644bb;
+.priority0 {
+  border: 2px solid #2f8d30;
 }
 
-.priorityNormal {
-  color: #44bb46;
+.priority1 {
+  border: 2px solid #AC7809;
 }
 
-.priorityUrgent {
-  color: #bb4644;
+.priority2 {
+  border: 2px solid #bb4644;
 }
 
 .todoActionButton {
@@ -101,7 +99,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   padding: 1em 0;
   border: 2px solid rgba(235, 235, 235, 0);
   border-radius: 10px;

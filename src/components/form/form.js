@@ -160,6 +160,7 @@ const addTodoForm = (parent) => {
     "priority",
     "",
     data.priority === 0 ? { checked: "" } : {},
+    [ "priority0" ]
   );
   createInput(
     "radio",
@@ -169,6 +170,7 @@ const addTodoForm = (parent) => {
     "priority",
     "",
     data.priority === 1 ? { checked: "" } : {},
+    [ "priority1" ]
   );
   createInput(
     "radio",
@@ -178,6 +180,7 @@ const addTodoForm = (parent) => {
     "priority",
     "",
     data.priority === 2 ? { checked: "" } : {},
+    [ "priority2" ]
   );
   createInput(
     "text",

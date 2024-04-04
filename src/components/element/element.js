@@ -76,8 +76,12 @@ export const createInput = (
   name = "",
   initialText = "",
   attributes = {},
+  additionalClasses = []
 ) => {
-  const inputDiv = createElement("div", "inputDiv", parent);
+  let css = ["inputDiv"];
+  if (additionalClasses && additionalClasses.length)
+    css = ["inputDiv", ...additionalClasses];
+  const inputDiv = createElement("div", css, parent);
   createTextElement("label", "label", inputDiv, labelText, {
     for: labelText,
   });

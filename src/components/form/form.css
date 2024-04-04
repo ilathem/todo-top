@@ -69,3 +69,21 @@
   border: 1px solid rgba(172, 172, 172, 0.72);
   padding: 0.5em;
 }
+
+.priority0 {
+  border: 2px solid #2f8d30;
+  padding: .5em;
+  border-radius: 10px;
+}
+
+.priority1 {
+  border: 2px solid #AC7809;
+  padding: .5em;
+  border-radius: 10px;
+}
+
+.priority2 {
+  border: 2px solid #bb4644;
+  padding: .5em;
+  border-radius: 10px;
+}
