@@ -38,6 +38,7 @@ const createTodo = (todo) => {
   const markCompleteBtn = document.createElement("img");
   markCompleteBtn.src = check;
   markCompleteBtn.classList.add("todoActionButton");
+  markCompleteBtn.classList.add("check");
   markCompleteBtn.addEventListener("click", () => {
     Todo.completeTodo(todo);
     document.querySelector("main").innerHTML = "";
@@ -47,6 +48,7 @@ const createTodo = (todo) => {
   const trashBtn = document.createElement("img");
   trashBtn.src = trash;
   trashBtn.classList.add("todoActionButton");
+  trashBtn.classList.add("trash");
   trashBtn.addEventListener("click", () => {
     Todo.deleteTodo(todo);
     document.querySelector("main").innerHTML = "";
