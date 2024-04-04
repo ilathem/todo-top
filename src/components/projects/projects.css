@@ -23,7 +23,9 @@
   background-color: rgba(100, 100, 100, 0.1);
   padding: 0.5em;
   border-radius: 10px;
-  transition: all 200ms, scale 500ms;
+  transition:
+    all 200ms,
+    scale 500ms;
   border: 2px solid rgba(235, 235, 235, 0);
   box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, 0.2);
 }
@@ -33,13 +35,16 @@
 }
 
 .todoContainer:hover,
-.check:hover
-{
+.check:hover {
   background-color: rgba(100, 100, 100, 0.3);
   border: 2px solid rgba(235, 235, 235, 0.5);
   color: white;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 20px 30px;
   scale: 1.1;
+}
+
+.check:hover {
+  box-shadow: 0px 5px 5px 0px rgba(178, 178, 178, 0.3);
 }
 
 .subsection {
@@ -66,7 +71,9 @@
 }
 
 .check {
-  transition: all 200ms, scale 500ms;
+  transition:
+    all 200ms,
+    scale 500ms;
   cursor: pointer;
   height: 30px;
   width: 30px;
@@ -83,3 +90,4 @@
   padding: 1em 0;
   /* border: 2px solid white; */
 }
+
