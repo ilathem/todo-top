@@ -48,6 +48,9 @@ const createTodo = (todo) => {
   trashBtn.src = trash;
   trashBtn.classList.add("todoActionButton");
   trashBtn.addEventListener("click", () => {
+    Todo.deleteTodo(todo);
+    document.querySelector("main").innerHTML = "";
+    Projects();
     console.log("trash clicked");
   });
   row.appendChild(markCompleteBtn);

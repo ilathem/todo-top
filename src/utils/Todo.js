@@ -88,21 +88,7 @@ class Todo {
   };
 
   deleteTodo = (incomingTodo) => {
-    const project = this.projects.find(
-      (project) => project.id === incomingTodo.projectId,
-    );
-    let indexToRemove = -1;
-    project.todos.forEach((todo, index) => {
-      if (todo.id === incomingTodo.id) {
-        todo === incomingTodo;
-        indexToRemove = index;
-        return;
-      }
-    });
-    if (indexToRemove >= 0) {
-      project.todos = project.todos.splice(indexToRemove, 1);
-      this.storage.setProject(project);
-    }
+    this.storage.deleteTodo(incomingTodo);
   };
 
   deleteProject = (incomingProject) => {

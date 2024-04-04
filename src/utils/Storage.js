@@ -70,6 +70,16 @@ class LocalStorage {
   }
 
   completeTodo(incomingTodo) {
+    const { project, projects } = this.deleteTodoWithoutSaving(incomingTodo);
+    if (project.previousTodos && project.previousTodos.length) {
+      project.previousTodos.push(incomingTodo);
+    } else {
+      project.previousTodos = [incomingTodo];
+    }
+    window.localStorage.setItem("projects", JSON.stringify(projects));
+  }
+
+  deleteTodoWithoutSaving(incomingTodo) {
     let projects = JSON.parse(window.localStorage.getItem("projects"));
     const project = projects.find(
       (project) => project.id === incomingTodo.projectId,
@@ -85,11 +95,15 @@ class LocalStorage {
     if (todoIndex < 0)
       throw new Error(`Error updating todo ${incomingTodo}, todo not found`);
     project.todos.splice(todoIndex, 1);
-    if (project.previousTodos && project.previousTodos.length) {
-      project.previousTodos.push(incomingTodo);
-    } else {
-      project.previousTodos = [incomingTodo];
-    }
+    return {
+      project,
+      incomingTodo,
+      projects,
+    };
+  }
+
+  deleteTodo(incomingTodo) {
+    const { projects } = this.deleteTodoWithoutSaving(incomingTodo);
     window.localStorage.setItem("projects", JSON.stringify(projects));
   }
 }
@@ -97,7 +111,6 @@ class LocalStorage {
 class Storage {
   #storageMediums = [];
   constructor(...buckets) {
-    // console.log('creating new storage object');
     this.#initializeStorageMediums(buckets);
   }
 
@@ -162,6 +175,12 @@ class Storage {
   completeTodo(todo) {
     for (const container of this.#storageMediums) {
       container.completeTodo(todo);
+    }
+  }
+
+  deleteTodo(todo) {
+    for (const container of this.#storageMediums) {
+      container.deleteTodo(todo);
     }
   }
 }
