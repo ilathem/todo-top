@@ -17,12 +17,6 @@ to the gh-pages branch, which automatically deploys to the gh-pages site.
 
 ## Planning
 
-### Todo: 
-
-#### Existing todos...
-
-- implement way to clear projects
-
 ### Features
 
 - Todo Item:
