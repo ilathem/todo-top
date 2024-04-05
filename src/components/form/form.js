@@ -160,7 +160,7 @@ const addTodoForm = (parent) => {
     "priority",
     "",
     data.priority === 0 ? { checked: "" } : {},
-    [ "priority0" ]
+    ["priority0"],
   );
   createInput(
     "radio",
@@ -170,7 +170,7 @@ const addTodoForm = (parent) => {
     "priority",
     "",
     data.priority === 1 ? { checked: "" } : {},
-    [ "priority1" ]
+    ["priority1"],
   );
   createInput(
     "radio",
@@ -180,7 +180,7 @@ const addTodoForm = (parent) => {
     "priority",
     "",
     data.priority === 2 ? { checked: "" } : {},
-    [ "priority2" ]
+    ["priority2"],
   );
   createInput(
     "text",
@@ -200,7 +200,7 @@ const addTodoForm = (parent) => {
   );
   if (data.checklist) {
     for (const checklistItem of data.checklist) {
-      createTextElement(
+      const item = createTextElement(
         "p",
         "checklistItem",
         checklistDiv,
@@ -208,6 +208,7 @@ const addTodoForm = (parent) => {
         {},
         (event) => toggleChecklistItem(event),
       );
+      if (checklistItem.done) item.classList.add("checklistItemDone");
     }
   }
   const [checklistInput, checklistInputDiv] = createInput(
